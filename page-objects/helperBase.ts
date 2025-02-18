@@ -1,4 +1,5 @@
 import { Page } from "@playwright/test";
+import {faker} from '@faker-js/faker'
 
 export class HelperBase {
 
@@ -10,6 +11,10 @@ export class HelperBase {
 
     async waitForNumberOfSeconds(timeInSeconds: number) {
         await this.page.waitForTimeout(timeInSeconds * 1000)
+    }
+
+    getRandomEmail(): string {
+        return `${faker.person.fullName().replace(' ', '')}${faker.number.int(1000)}@gmail.com`
     }
     
 }
