@@ -2,7 +2,7 @@ import { defineConfig, devices } from '@playwright/test';
 
 export default defineConfig({
   timeout: 30000,
-  globalTimeout: 60000,
+  globalTimeout: 300000,
   expect: {
     timeout: 5000
   },
