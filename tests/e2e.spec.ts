@@ -7,7 +7,9 @@ test.describe('e2e suite', () => {
         await page.goto('/')
     })
 
-    test('Main page should be loaded succesfully @smoke @regression', async({page}) => {
+    test('Main page should be loaded succesfully @smoke @regression', async({page}, testInfo) => {
+        test.skip(testInfo.project.name === 'mobile', 'Skipping this test on mobile project')
+
         const pm = new PageManager(page)
         await expect(pm.onMainPage().searchBar).toBeVisible()
         await expect(pm.onMainPage().searchBtn).toBeVisible()

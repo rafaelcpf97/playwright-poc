@@ -14,7 +14,7 @@ export class HelperBase {
     }
 
     getRandomEmail(): string {
-        return `${faker.person.fullName().replace(' ', '')}${faker.number.int(1000)}@gmail.com`
+        return `${faker.person.fullName().replace(' ', '').trim()}${faker.number.int(1000)}@gmail.com`
     }
     
 }
