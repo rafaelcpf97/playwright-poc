@@ -13,6 +13,10 @@ export class MainPage extends HelperBase {
     readonly signInBtn: Locator
     readonly newsletterEmail: Locator
     readonly newsletterSubmitBtn: Locator
+    readonly facebookBtn: Locator
+    readonly twitterBtn: Locator
+    readonly rssBtn: Locator
+    readonly newsletterSubmitMessage: Locator
 
     constructor(page: Page) {
         super(page)
@@ -26,6 +30,11 @@ export class MainPage extends HelperBase {
         this.signInBtn = page.getByRole('link', { name: 'Sign in'})
         this.newsletterEmail = page.locator('#newsletter-input')
         this.newsletterSubmitBtn = page.locator('button[name="submitNewsletter"]')
+        this.facebookBtn = page.getByRole('listitem').filter({ hasText: 'Facebook' })
+        this.twitterBtn = page.getByRole('listitem').filter({ hasText: 'Twitter' })
+        this.rssBtn = page.getByRole('listitem').filter({ hasText: 'RSS' })
+        this.newsletterSubmitMessage = page.locator('p:has-text("Newsletter : You have successfully subscribed to this newsletter.")')
+
     }
 
     /**

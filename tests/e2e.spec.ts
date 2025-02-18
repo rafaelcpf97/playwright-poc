@@ -21,13 +21,20 @@ test.describe('e2e suite', () => {
     test('Signing up should work @smoke @regression', async({page}) => {
         const pm = new PageManager(page)
         await pm.onMainPage().signInBtn.click()
-        await pm.onSignInPage().createNewAccount(faker.internet.email.toString())
+        const email = pm.onMainPage().getRandomEmail()
+        console.log(email)
+        await pm.onSignInPage().createNewAccount(email)
     })
 
     test('Signing in should work @smoke @regression', async({page}) => {
         const pm = new PageManager(page)
         await pm.onMainPage().signInBtn.click()
-        await pm.onSignInPage().login(faker.internet.email.toString(), faker.internet.password.toString())
+        const email = pm.onMainPage().getRandomEmail()
+        console.log(email)
+        const password = faker.internet.password({length: 10})
+        console.log(password)
+
+        await pm.onSignInPage().login(email, password)
     })
 
     test('Searching should work @smoke @regression', async({page}) => {
@@ -37,11 +44,15 @@ test.describe('e2e suite', () => {
 
     test('Newsletter should work @regression', async({page}) => {
         const pm = new PageManager(page)
-        await pm.onMainPage().submitNewsletter(faker.internet.email.toString())
+        const email = pm.onMainPage().getRandomEmail()
+        console.log(email)
+        await pm.onMainPage().submitNewsletter(email)
+        await expect(pm.onMainPage().newsletterSubmitMessage).toBeVisible()
     })
 
     test('Social media links should be correct @regression', async({page}) => {
-
+        const pm = new PageManager(page)
+        await pm.onMainPage().facebookBtn.click()
     })
 
 
