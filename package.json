@@ -2,13 +2,21 @@
   "name": "playwright-poc",
   "version": "1.0.0",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "e2e-chrome": "npx playwright test e2e.spec.ts --project=chromium",
+    "e2e-firefox": "npx playuwright test e2e.spec.ts --proejct=firefox",
+    "e2e-all-browsers": "npm run e2e-chrome && npm run e2e-firefox",
+    "smoke": "npx playwright test --project=chromium --grep @smoke",
+    "regression": "npx playwright test --project=chromium --grep @regression"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "@faker-js/faker": "^9.5.0",
     "@playwright/test": "^1.50.1",
-    "@types/node": "^22.13.4"
+    "@types/node": "^22.13.4",
+    "allure-playwright": "^3.2.0"
   }
 }
